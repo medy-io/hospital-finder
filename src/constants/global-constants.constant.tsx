@@ -1,1 +1,1 @@
-export const APP_NAME: string = 'flight finder PHL';
+export const APP_NAME: string = 'PA Hospital Finder';
