@@ -1,8 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## PA Hospital Finder
 
-In the project directory, you can run:
+This project is a simple react/typescript app that takes publicly avaiable hospital data along with a users geolocation and finds the nearest hospital location to the user and presents hospital information and directions in a card format to the user. *WARNING geolocation in web browsers can be fairly in accurate and this app is meant for demo purposes only!*
 
 ### `npm start`
 
