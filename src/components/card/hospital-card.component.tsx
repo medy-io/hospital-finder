@@ -1,4 +1,5 @@
 import React from 'react';
+import './hospital-card.css';
 
 export default function HospitalCard(props: any) {
   return (
