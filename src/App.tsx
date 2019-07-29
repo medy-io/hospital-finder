@@ -5,7 +5,7 @@ import SearchButton from './components/button/search-button.component';
 import { HospitalDisplayData } from './interfaces/global-interfaces.interface';
 import checkForGeoLocation, { getUserPosition } from './services/geolocation';
 import hospitalData from './data/hospitals_2018-09.json';
-import { createHospitalObj } from './../service/geolocation';
+import { createHospitalObj, findNearestHospital } from './../service/geolocation';
 
 
 import './App.css';
