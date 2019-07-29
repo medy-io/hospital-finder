@@ -103,3 +103,4 @@ const createHospitalObj = (
 };
 
 export const createHospitalObj;
+export const findNearestHospital;
