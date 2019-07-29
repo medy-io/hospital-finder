@@ -98,7 +98,7 @@ const createHospitalObj = (
         hospital[0].hospitalData.geometry.coordinates[0] +
         travelMode
     };
-    setDirectionsToHospital(directionsToHospital);
+    return directionsToHospital;
   }
 };
 
