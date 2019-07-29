@@ -1,13 +1,13 @@
 .demo-card {
   width: 350px;
-  margin 48px 0;
+  margin: 48px 0;
 }
 
 .hospital-card {
   border-radius: 4px;
   background-color: #fff;
-  -webkit-box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
-  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+  -webkit-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -16,18 +16,45 @@
   box-sizing: border-box;
 }
 
-.hospital-card-header {
-
+.h-c-header {
+  background-color: #0000008a;
+  padding: 6px 16px;
 }
 
-.hospital-card-title {
-
+.h-c-content {
+  padding: 16px;
 }
 
-.hospital-card-text {
-
+.h-c-button {
+  color: #fff;
+  background-color: #1976d2;
+  border: none;
+  width: 100%;
+  padding: 6px 16px;
 }
 
-.hospital-card-button {
-
+.h-c-button-content {
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 4px;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
 }
+
+.h-c-action {
+  width: 100%;
+}
+
+.hospital-card-header {}
+
+.hospital-card-title {}
+
+.hospital-card-text {}
+
+.hospital-card-button {}
