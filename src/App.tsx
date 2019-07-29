@@ -12,21 +12,21 @@ import './App.css';
 
 const App: React.FC = () => {
   const [directionsToHospital, setDirectionsToHospital] = React.useState<HospitalDisplayData>();
-
-  useEffect(() => {
-    // kick off service here
-    checkForGeoLocation()
-  }, []);
-
+  
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,
     maximumAge: 0
   };
-
+  
   const error = (err: any) => {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
+
+  useEffect(() => {
+    // kick off service here
+    checkForGeoLocation()
+  }, []);
 
   const checkForGeoLocation = (): void => {
     if (window && window.navigator && window.navigator.geolocation) {
@@ -38,7 +38,7 @@ const App: React.FC = () => {
   const getUserPosition = (pos: any) => {
     if (pos) {
       // @ts-ignore
-      setDirectionsToHospital(this.createHospitalObj.createHospitalObj(pos.coords.latitude, pos.coords.longitude, findNearestHospital(pos.coords.latitude, pos.coords.longitude)));
+      setDirectionsToHospital(this.createHospitalObj(pos.coords.latitude, pos.coords.longitude, this.findNearestHospital(pos.coords.latitude, pos.coords.longitude)));
     }
   }
 
