@@ -1,42 +1,105 @@
-import hospitalData from './../data/hospitals_2018-09.json';
-
-// check for window, navigator, and geolocation
-export default function checkForGeoLocation(): void {
-    if (window && window.navigator && window.navigator.geolocation) {
-        window.navigator.geolocation.getCurrentPosition(getUserPosition);
-    }
-}
-
-// get user position
-export const getUserPosition = (pos: any) => {
-    if (pos) {
-        return createHospitalObj(pos.coords.latitude, pos.coords.longitude, findNearestHospital(pos.coords.latitude, pos.coords.longitude));
-    }
-}
+import hospitalData from "./../data/hospitals_2018-09.json";
 
 // TODO: increase the accuracy of finding how close the hospital is relative to directions and not a striaght line ***
 const findNearestHospital = (userlat: number, userlong: number) => {
-    // @ts-ignore
-    return hospitalData.features.reduce((prev: any, currentHospital: any) => {
-        if (prev && currentHospital && currentHospital.geometry && currentHospital.geometry.coordinates.length > 0) {
-            return {
-                hospitalData: currentHospital,
-                lat: Math.abs(currentHospital.properties.LATITUDE - userlat) < Math.abs(prev.lat) ? currentHospital.properties.LATITUDE : prev.lat,
-                long: Math.abs(currentHospital.properties.LONGITUDE - userlong) < Math.abs(prev.long) ? currentHospital.properties.LONGITUDE : prev.long
-            };
-        }
-    });
-}
+  // @ts-ignore
+  let hosArr: [] = hospitalData.features.map(currentHospital => {
+    if (
+      currentHospital &&
+      currentHospital.geometry &&
+      currentHospital.geometry.coordinates.length > 0
+    ) {
+      let currentDis: number = getDistanceFromLatLonInKm(
+        userlat,
+        userlong,
+        currentHospital.geometry.coordinates[1],
+        currentHospital.geometry.coordinates[0]
+      );
+      return {
+        hospitalData: currentHospital,
+        smallestDis: currentDis
+      };
+    }
+  });
+  return hosArr.sort(compare);
+};
 
-const createHospitalObj = (userLat: number, userLong: number, hospital: any) => {
-    const urlPrefix: string = 'https://www.google.com/maps/dir/?api=1&Space+Needle+Seattle+WA&destination=Pike+Place+Market+Seattle+WA&travelmode=driving';
-    const travelMode: string = '&travelmode=driving';
-    return {
-        name: hospital.hospitalData.properties.FACILITY_N,
-        address: hospital.hospitalData.properties.STREET + ', ' + hospital.hospitalData.properties.CITY_TOWN + ', PA ' + hospital.hospitalData.properties.ZIP_CODE,
-        phone: hospital.hospitalData.properties.AREA_CODE + ' - ' + hospital.hospitalData.properties.TELEPHONE_,
-        website: hospital.hospitalData.properties.FACILITY_U ? hospital.hospitalData.properties.FACILITY_U : '',
-        coordinates: { lat: hospital.hospitalData.geometry.coordinates[1], long: hospital.hospitalData.geometry.coordinates[0] },
-        mapsUrl: urlPrefix + 'origin=' + userLat + ',' + userLong + '&destination=' + hospital.lat + ',' + hospital.long + travelMode
+const getDistanceFromLatLonInKm = (
+  lat1: number,
+  lon1: number,
+  lat2: number,
+  lon2: number
+) => {
+  var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(lat2 - lat1); // deg2rad below
+  var dLon = deg2rad(lon2 - lon1);
+  var a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(deg2rad(lat1)) *
+      Math.cos(deg2rad(lat2)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c; // Distance in km
+  return d;
+};
+
+const deg2rad = (deg: number) => {
+  return deg * (Math.PI / 180);
+};
+
+const compare = (a: any, b: any) => {
+  return a.smallestDis - b.smallestDis;
+};
+
+const createHospitalObj = (
+  userLat: number,
+  userLong: number,
+  hospital: any
+) => {
+  console.log("createHospitalObj");
+  console.log(hospital[0]);
+  if (
+    hospital[0] &&
+    hospital[0].hospitalData &&
+    hospital[0].hospitalData.geometry &&
+    hospital[0].hospitalData.geometry.coordinates.length > 0
+  ) {
+    const urlPrefix: string = "https://www.google.com/maps/dir/?api=1&";
+    const travelMode: string = "&travelmode=driving";
+    let directionsToHospital: any = {
+      name: hospital[0].hospitalData.properties.FACILITY_N,
+      address:
+        hospital[0].hospitalData.properties.STREET +
+        ", " +
+        hospital[0].hospitalData.properties.CITY_TOWN +
+        ", PA " +
+        hospital[0].hospitalData.properties.ZIP_CODE,
+      phone:
+        hospital[0].hospitalData.properties.AREA_CODE +
+        " - " +
+        hospital[0].hospitalData.properties.TELEPHONE_,
+      website: hospital[0].hospitalData.properties.FACILITY_U
+        ? hospital[0].hospitalData.properties.FACILITY_U
+        : "",
+      coordinates: {
+        lat: hospital[0].hospitalData.geometry.coordinates[1],
+        long: hospital[0].hospitalData.geometry.coordinates[0]
+      },
+      mapsUrl:
+        urlPrefix +
+        "origin=" +
+        userLat +
+        "," +
+        userLong +
+        "&destination=" +
+        hospital[0].hospitalData.geometry.coordinates[1] +
+        "," +
+        hospital[0].hospitalData.geometry.coordinates[0] +
+        travelMode
     };
-}
+    setDirectionsToHospital(directionsToHospital);
+  }
+};
+
+export const createHospitalObj;
