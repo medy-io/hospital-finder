@@ -1,7 +1,8 @@
 import hospitalData from "./../data/hospitals_2018-09.json";
 
 // TODO: increase the accuracy of finding how close the hospital is relative to directions and not a striaght line ***
-const findNearestHospital = (userlat: number, userlong: number) => {
+// @ts-ignore
+export const findNearestHospital = (userlat: number, userlong: number) => {
   // @ts-ignore
   let hosArr: [] = hospitalData.features.map(currentHospital => {
     if (
@@ -24,21 +25,16 @@ const findNearestHospital = (userlat: number, userlong: number) => {
   return hosArr.sort(compare);
 };
 
-const getDistanceFromLatLonInKm = (
-  lat1: number,
-  lon1: number,
-  lat2: number,
-  lon2: number
-) => {
+const getDistanceFromLatLonInKm = (lat1: number, lon1: number, lat2: number, lon2: number) => {
   var R = 6371; // Radius of the earth in km
   var dLat = deg2rad(lat2 - lat1); // deg2rad below
   var dLon = deg2rad(lon2 - lon1);
   var a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos(deg2rad(lat1)) *
-      Math.cos(deg2rad(lat2)) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
+    Math.cos(deg2rad(lat2)) *
+    Math.sin(dLon / 2) *
+    Math.sin(dLon / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   var d = R * c; // Distance in km
   return d;
@@ -52,19 +48,11 @@ const compare = (a: any, b: any) => {
   return a.smallestDis - b.smallestDis;
 };
 
-const createHospitalObj = (
-  userLat: number,
-  userLong: number,
-  hospital: any
-) => {
+// @ts-ignore
+export const createHospitalObj = (userLat: number, userLong: number, hospital: any) => {
   console.log("createHospitalObj");
   console.log(hospital[0]);
-  if (
-    hospital[0] &&
-    hospital[0].hospitalData &&
-    hospital[0].hospitalData.geometry &&
-    hospital[0].hospitalData.geometry.coordinates.length > 0
-  ) {
+  if (hospital[0] && hospital[0].hospitalData && hospital[0].hospitalData.geometry && hospital[0].hospitalData.geometry.coordinates.length > 0) {
     const urlPrefix: string = "https://www.google.com/maps/dir/?api=1&";
     const travelMode: string = "&travelmode=driving";
     let directionsToHospital: any = {
@@ -101,6 +89,3 @@ const createHospitalObj = (
     return directionsToHospital;
   }
 };
-
-export const createHospitalObj;
-export const findNearestHospital;

@@ -19,6 +19,8 @@
 .h-c-header {
   background-color: #0000008a;
   padding: 6px 16px;
+  font-family: Lato Regular;
+  font-size: 0.80rem;
 }
 
 .h-c-content {

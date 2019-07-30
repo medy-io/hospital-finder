@@ -1,24 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import AppHeader from './components/header/header.component';
-import HospitalCard from './components/card/hospital-card.component';
-import SearchButton from './components/button/search-button.component';
+import HospitalCard from './components/hospital-card/hospital-card.component';
 import { HospitalDisplayData } from './interfaces/global-interfaces.interface';
-import checkForGeoLocation, { getUserPosition } from './services/geolocation';
-import hospitalData from './data/hospitals_2018-09.json';
-import { createHospitalObj, findNearestHospital } from './../service/geolocation';
-
-
+import { findNearestHospital, createHospitalObj } from './services/geolocation';
 import './App.css';
 
 const App: React.FC = () => {
   const [directionsToHospital, setDirectionsToHospital] = React.useState<HospitalDisplayData>();
-  
+
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,
     maximumAge: 0
   };
-  
+
   const error = (err: any) => {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
@@ -38,7 +32,7 @@ const App: React.FC = () => {
   const getUserPosition = (pos: any) => {
     if (pos) {
       // @ts-ignore
-      setDirectionsToHospital(this.createHospitalObj(pos.coords.latitude, pos.coords.longitude, this.findNearestHospital(pos.coords.latitude, pos.coords.longitude)));
+      setDirectionsToHospital(createHospitalObj(pos.coords.latitude, pos.coords.longitude, findNearestHospital(pos.coords.latitude, pos.coords.longitude)));
     }
   }
 
