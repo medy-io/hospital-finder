@@ -1,6 +1,6 @@
 // hospital-card-button.component.tsx
 import React from 'react';
-import './card-button.css';
+import './card-button.scss';
 
 
 export default function HospitalCardButton(props: any) {
