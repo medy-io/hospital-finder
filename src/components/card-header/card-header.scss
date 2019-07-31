@@ -3,9 +3,14 @@
     background-color: #0000008a;
     padding: 6px 16px;
     font-family: Lato Regular;
-    font-size: 0.80rem;
+    /* font-size: 0.80rem; */
+    font-size: 25px;
 }
 
-.h-c-logo {}
+.h-c-logo {
+    float: left;
+}
 
-.h-c-title {}
+.h-c-title {
+    float: right;
+}
