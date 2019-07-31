@@ -1,33 +1,7 @@
-// need to add:
-// ¡¡¡look for webpack integrations!!!
-// 1. gulp / gulp watch functions
-// 2. SASS
-// 3. SASS watcher
-// 4. gulp-uglify
-// 5. gulp-minify-css
-// 6. gulp-sass
 {
-  "name": "flight-finder-phl",
+  "name": "pa-hospital-finder",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.0.0-rc.0",
-    "@material-ui/icons": "^4.2.0",
-    "@material-ui/styles": "^4.1.2",
-    "@types/google-map-react": "^0.23.12",
-    "@types/google-maps-react": "^2.0.1",
-    "@types/jest": "24.0.15",
-    "@types/node": "12.0.8",
-    "@types/react": "16.8.21",
-    "@types/react-dom": "16.8.4",
-    "google-map-react": "^1.1.4",
-    "google-maps-react": "^2.0.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-geolocated": "^2.5.0",
-    "react-scripts": "3.0.1",
-    "typescript": "3.5.2"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -48,5 +22,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-geolocated": "^2.5.0",
+    "react-scripts": "3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "12.0.8",
+    "@types/react": "16.8.21",
+    "@types/react-dom": "16.8.4",
+    "@types/jest": "24.0.15",
+    "sass": "^1.22.9",
+    "typescript": "^3.5.2"
   }
 }
