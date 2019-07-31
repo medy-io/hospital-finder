@@ -1,6 +1,6 @@
 // hospital-card-body.component.tsx
 import React from 'react';
-import './card-body.css';
+import './card-body.scss';
 
 export default function HospitalCardBody(props: any) {
   return (
