@@ -1,6 +1,6 @@
 // hospital-card-header.component.tsx
 import React from 'react';
-import './card-header.css';
+import './card-header.scss';
 
 export default function HospitalCardHeader() {
   return (
