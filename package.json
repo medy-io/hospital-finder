@@ -35,6 +35,6 @@
     "@types/react-dom": "16.8.4",
     "@types/jest": "24.0.15",
     "sass": "^1.22.9",
-    "typescript": "^3.5.2"
+    "typescript": "^3.5.2" // npm install node-sass
   }
 }
