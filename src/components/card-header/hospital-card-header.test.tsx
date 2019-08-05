@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HospitalCardHeader from './hospital-card-header.component.tsx';
+import HospitalCardHeader from './hospital-card-header.component';
 
 it('hospital card header renders without crashing', () => {
   const div = document.createElement('div');

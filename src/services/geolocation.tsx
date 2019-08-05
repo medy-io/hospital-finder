@@ -50,8 +50,6 @@ const compare = (a: any, b: any) => {
 
 // @ts-ignore
 export const createHospitalObj = (userLat: number, userLong: number, hospital: any) => {
-  console.log("createHospitalObj");
-  console.log(hospital[0]);
   if (hospital[0] && hospital[0].hospitalData && hospital[0].hospitalData.geometry && hospital[0].hospitalData.geometry.coordinates.length > 0) {
     const urlPrefix: string = "https://www.google.com/maps/dir/?api=1&";
     const travelMode: string = "&travelmode=driving";

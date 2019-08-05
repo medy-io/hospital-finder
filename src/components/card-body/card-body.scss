@@ -5,23 +5,36 @@
 
 .h-c-hospital-name {
     font-family: Lato Black;
-    font-size: 45px;
+    font-size: 40px;
 }
 
 .h-c-hospital-address {
     font-family: Lato Regular;
-    font-size: 25px;
-    color: #6f6f6f;
+    font-size: 22px;
+    color: #616161;
+    text-transform: lowercase;
 }
 
 .h-c-hospital-phone {
     font-family: Lato Regular;
-    font-size: 25px;
-    color: #6f6f6f;
+    font-size: 22px;
+    color: #616161;
 }
 
 .h-c-hospital-website {
     font-family: Lato Regular;
-    font-size: 25px;
-    color: #6f6f6f;
+    font-size: 22px;
+    color: #616161;
+}
+
+.h-c-secondary-content {
+    padding: 20px 0px 20px 0px;
+}
+
+.h-c-secondary-content>div {
+    padding: 5px 5px;
+}
+
+.h-c-icon {
+    padding-right: 20px;
 }

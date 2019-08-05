@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HospitalCardAction from './hospital-card-action.component.tsx';
+import HospitalCardAction from './hospital-card-action.component';
 
 it('hospital card action renders without crashing', () => {
   const div = document.createElement('div');
