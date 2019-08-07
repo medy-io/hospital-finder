@@ -1,3 +1,4 @@
+// imported JSON, PA does NOT have an open api, only a loose JSON file
 import hospitalData from "./../data/hospitals_2018-09.json";
 
 // TODO: increase the accuracy of finding how close the hospital is relative to directions and not a striaght line ***
