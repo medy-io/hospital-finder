@@ -10,9 +10,20 @@ Read more about getCurrentPosition() here: https://developer.mozilla.org/en-US/d
 
 Unfortunately the getCurrentPosition() method and IP geolocation as a whole is fairly inaccurate, leading to directions that may not line up with a users physical location. This is the biggest issue facing this app right now and one relegating it for **DEMO USE ONLY**. Alternatives are being explored to get a more accurate geolocation result.
 
-
 #### WARNING :warning:
 **This app uses IP geolocation, rendering user positions for hospital directions inaccurately. That means you should use this app at your own risk and cannot blame this application for any risks, injuries or deaths that occur because of usage!** 
+
+#### React Native version coming soon!
+
+### Open Source :earth_americas:
+
+This app is completely open source and ready for use in other states or countries. Check list for using it in your community
+1. Change prefix name i.e. "__your community name__ Hospital Finder".
+2. Add data source, either local JSON, API call or other to the geolocation.tsx service
+3. Add custom styling, fonts, and any extras you'd like to fit your needs.
+4. Deploy it!
+
+DONE!
 
 
 ### App Structure :ferris_wheel:
